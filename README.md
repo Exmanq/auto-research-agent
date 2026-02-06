@@ -1,4 +1,6 @@
-# auto-research-agent
+<img width="1024" height="1024" alt="dsfsdfe" src="https://github.com/user-attachments/assets/931c2a81-e39d-417d-89c8-cb535f3d3658" />
+
+# Auto-research-agent
 
 > Automated research CLI: collect sources, summarize, find trends/controversies, and propose project ideas in minutes.
 
