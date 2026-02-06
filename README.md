@@ -7,7 +7,7 @@
 ## Why
 - Быстро получить ориентир по теме без ручного сбора ссылок.
 - Работает офлайн из коробки на seed-датасете (50 источников).
-- Подключаемые провайдеры для реального поиска, если нужны API ключи.
+- Подключаемые провайдеры для реального поиска, если нужны API ключи (Serper сейчас, остальные — через провайдеры).
 
 ## Features
 - `auto-research "TOPIC" --out out/` генерирует:
@@ -36,7 +36,7 @@ TL;DR (фрагмент из `examples/out/tldr.md`):
 Больше примеров в `examples/out/`.
 
 ## How it works
-- Провайдеры собирают ссылки (по умолчанию SeedProvider из `data/seed_sources.json`).
+- Провайдеры собирают ссылки: SeedProvider (всегда), SerperProvider (если `SERPER_API_KEY`).
 - `rank_sources`: TF-IDF + косинус по topic vs (title+url).
 - `summarize_sources`: экстрактивные предложения + ключевые слова => тренды/споры.
 - `generate_ideas` и `generate_roadmap`: синтетика на основе keywords.
@@ -44,7 +44,7 @@ TL;DR (фрагмент из `examples/out/tldr.md`):
 
 ## Configuration
 - Без ключей: используется seed-датасет (50 ссылок).
-- С ключами: добавьте провайдер в `providers/`, читайте ключи из env (`SERPER_API_KEY`, `TAVILY_API_KEY`, `BING_API_KEY`, `GITHUB_TOKEN`, др.), зарегистрируйте в `pipeline.gather_sources`.
+- С ключами: установите `SERPER_API_KEY` (Serper.dev). Можно добавить свои провайдеры (Tavily/Bing/GitHub/arXiv) — см. `docs/PROVIDERS.md` и зарегистрируйте в `pipeline.gather_sources`.
 - Параметры: `--out` для директории вывода; топик — аргумент CLI.
 
 ## FAQ

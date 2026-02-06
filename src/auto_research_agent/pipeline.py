@@ -6,6 +6,7 @@ from typing import Any
 from jinja2 import Template
 
 from .providers.seed import SeedProvider
+from .providers.serper import SerperProvider
 from .ranker import rank_sources
 from .summarizer import extractive_summary, top_keywords
 
@@ -22,7 +23,7 @@ def ensure_dir(path: str) -> None:
 
 
 def gather_sources(topic: str, limit: int = 50) -> list[tuple[str, str, float]]:
-    providers = [SeedProvider()]
+    providers = [SeedProvider(), SerperProvider()]
     collected: list[tuple[str, str]] = []
     for provider in providers:
         collected.extend(provider.fetch(topic, limit=limit))
