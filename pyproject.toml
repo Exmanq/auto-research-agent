@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "auto-research-agent"
+version = "0.1.0"
+description = "CLI tool to auto-research a topic, summarize, surface trends/controversies, and propose project ideas."
+authors = [{name = "Gats"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "scikit-learn>=1.4",
+    "jinja2>=3.1",
+    "typer>=0.12",
+    "rich>=13.7",
+    "pydantic>=2.7",
+]
+
+[project.scripts]
+auto-research = "auto_research_agent.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"auto_research_agent.data" = ["seed_sources.json"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "B", "UP", "SIM", "C4"]
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
