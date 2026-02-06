@@ -1,0 +1,52 @@
+# Sources
+
+- [Evals for Tool Agents](https://arxiv.org/abs/2312.XXXX) — score 0.31
+- [Memory for AI Agents](https://lilianweng.github.io/posts/2024-01-12-memory/) — score 0.26
+- [Evals for Tool-Using Agents](https://arxiv.org/abs/2403.05432) — score 0.25
+- [Awesome LLM Agents](https://github.com/yoheinakajima/awesome-llm-agents) — score 0.25
+- [Google: Advances in Agent Planning](https://ai.googleblog.com/2024/02/advances-in-agent-planning.html) — score 0.22
+- [Claude Tool Use Docs](https://docs.anthropic.com/claude/docs/tool-use) — score 0.20
+- [Auto alignment during tool use](https://arxiv.org/abs/2406.XXXX) — score 0.20
+- [AgentBench: Benchmarking LLM Agents](https://arxiv.org/abs/2406.02020) — score 0.18
+- [E2E Tool-Use Pipelines](https://arxiv.org/abs/2409.05050) — score 0.18
+- [Self-Reflection Loops in LLM Agents](https://arxiv.org/abs/2408.04040) — score 0.16
+- [Structured Evals](https://arxiv.org/abs/2404.XXXX) — score 0.15
+- [Hierarchical planning](https://arxiv.org/abs/2407.XXXX) — score 0.14
+- [Graph Memory for Agents](https://arxiv.org/abs/2407.03030) — score 0.14
+- [RAG vs Memory in Agents](https://arxiv.org/abs/2403.XXXX) — score 0.13
+- [DeepMind: Learning to Use Tools](https://developers.deepmind.com/blog/learning-to-use-tools) — score 0.13
+- [Memory Architectures for Autonomous Agents](https://arxiv.org/abs/2312.08900) — score 0.12
+- [Temporal Memory and Forgetting in Agents](https://arxiv.org/abs/2410.06060) — score 0.12
+- [Benchmarking Evals Robustness](https://arxiv.org/abs/2506.06060) — score 0.12
+- [Long-term Memory in Dialogue Agents](https://arxiv.org/abs/2404.00666) — score 0.11
+- [Safety and Alignment in Tool-Using Agents](https://arxiv.org/abs/2412.08080) — score 0.11
+- [Memory Compression for Long Context Agents](https://arxiv.org/abs/2503.03030) — score 0.11
+- [Planning with Structured World Models](https://arxiv.org/abs/2502.02020) — score 0.11
+- [Planning with Language Models: A 2025 Perspective](https://arxiv.org/abs/2401.11111) — score 0.10
+- [Memory graphs](https://arxiv.org/abs/2408.XXXX) — score 0.09
+- [LangChain Agents](https://python.langchain.com/docs/modules/agents/) — score 0.07
+- [Long-term memory stores](https://arxiv.org/abs/2402.XXXX) — score 0.07
+- [Adaptive Tool Selection](https://arxiv.org/abs/2507.07070) — score 0.07
+- [Multi-Agent Tool-Orchestration](https://arxiv.org/abs/2411.07070) — score 0.07
+- [Retrieval-Augmented Tool Chains](https://arxiv.org/abs/2405.00999) — score 0.07
+- [Toolformer and the Rise of Tool-Using LLMs](https://arxiv.org/abs/2402.12345) — score 0.06
+- [Meta-control for agents](https://arxiv.org/abs/2411.XXXX) — score 0.06
+- [Andy Matuschak on prompts and memory](https://andymatuschak.org/prompts/) — score 0.06
+- [Lil'Log: Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) — score 0.04
+- [Meta-Evaluation of Agentic Systems](https://arxiv.org/abs/2501.01010) — score 0.00
+- [Hybrid Symbolic-Neural Planners](https://arxiv.org/abs/2504.04040) — score 0.00
+- [Curriculum Learning for Agent Skills](https://arxiv.org/abs/2505.05050) — score 0.00
+- [Function Calling in LLMs](https://blog.openai.com/introducing-function-calling) — score 0.00
+- [OpenAI on Retrieval-Augmented Generation](https://openai.com/index/ret-augment/) — score 0.00
+- [Anthropic Research](https://anthropic.com/research) — score 0.00
+- [Microsoft Guidance](https://github.com/microsoft/guidance) — score 0.00
+- [ToolBench](https://github.com/OpenBMB/ToolBench) — score 0.00
+- [AgentBench GitHub](https://github.com/THUDM/AgentBench) — score 0.00
+- [Prompting Guide](https://www.promptingguide.ai/techniques) — score 0.00
+- [Toolformer](https://arxiv.org/abs/2307.09288) — score 0.00
+- [ReAct revisited](https://arxiv.org/abs/2308.XXXXX) — score 0.00
+- [Reflexion techniques](https://arxiv.org/abs/2310.XXXX) — score 0.00
+- [Planner-Executor architectures](https://arxiv.org/abs/2401.XXXX) — score 0.00
+- [Agent toolkits survey](https://arxiv.org/abs/2405.XXXX) — score 0.00
+- [Eval robustness](https://arxiv.org/abs/2409.XXXX) — score 0.00
+- [Simulation environments](https://arxiv.org/abs/2410.XXXX) — score 0.00

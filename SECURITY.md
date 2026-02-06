@@ -1,6 +1,7 @@
 # Security Policy
 
-- No secrets in repo. Use environment variables for API keys.
-- Rotate tokens if leaked; open a security issue privately.
-- Validate and sanitize external content where possible.
-- Keep dependencies updated; CI runs lint/tests on each PR.
+- Do not commit secrets; use environment variables for API keys.
+- If a token leaks, rotate immediately and open a private security issue.
+- Validate/sanitize data from external providers.
+- Keep dependencies updated; CI runs lint/tests on PRs.
+- Report vulnerabilities privately to the maintainer.

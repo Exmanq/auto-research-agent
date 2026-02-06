@@ -3,6 +3,9 @@ __pycache__/
 .venv/
 .env
 out/
+!examples/
+!examples/out/
+!examples/out/**
 .dist/
 build/
 .eggs/

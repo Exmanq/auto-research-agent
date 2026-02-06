@@ -1,9 +1,9 @@
 # Code of Conduct
 
-- Be respectful and inclusive.
-- Assume good intent; clarify before escalating.
-- No harassment, discrimination, or personal attacks.
+- Be respectful, inclusive, and assume good intent.
+- No harassment, discrimination, personal attacks, or doxxing.
 - Keep feedback constructive and specific.
-- Follow project licensing and attribution.
+- Credit sources and follow licensing.
+- Protect secrets; do not commit keys or private data.
 
-Report issues privately to the maintainer.
+Reports: open a security issue or contact the maintainer privately.

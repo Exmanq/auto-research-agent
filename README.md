@@ -1,97 +1,65 @@
 # auto-research-agent
 
-CLI-инструмент, который по теме автоматически собирает источники, ранжирует, делает структурированные резюме, выделяет тренды/спорные вопросы и предлагает идеи проектов.
+> Automated research CLI: collect sources, summarize, find trends/controversies, and propose project ideas in minutes.
 
-- Без ключей работает из коробки на сид-сборке качественных ссылок.
-- Поддерживает подключаемые провайдеры поиска (см. `providers/`).
-- Генерирует отчёты в Markdown.
+![CI](https://github.com/Exmanq/auto-research-agent/actions/workflows/ci.yml/badge.svg) ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg) ![Python](https://img.shields.io/badge/Python-3.11+-blue)
 
-## Установка
+## Why
+- Быстро получить ориентир по теме без ручного сбора ссылок.
+- Работает офлайн из коробки на seed-датасете (50 источников).
+- Подключаемые провайдеры для реального поиска, если нужны API ключи.
 
+## Features
+- `auto-research "TOPIC" --out out/` генерирует:
+  - sources.md, tldr.md, deep_summary.md, trends.md, controversies.md, ideas.md, roadmap.md
+- Сид-источники высокого качества (arXiv, блоги, репозитории, документация)
+- Простое TF-IDF ранжирование и экстрактивное суммирование
+- Лёгкое расширение провайдерами поиска и шаблонами Markdown
+
+## Quickstart
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e .
-```
-
-## Использование
-
-```bash
 auto-research "LLM Agents: tool use, memory, planning, evals (2024-2026)" --out out/
 ```
 
-Выходные файлы (создаются в `--out`):
-- `sources.md` — список ссылок + аннотации
-- `tldr.md` — короткое резюме
-- `deep_summary.md` — подробный обзор по секциям
-- `trends.md` — тренды (растёт/падает)
-- `controversies.md` — спорные вопросы
-- `ideas.md` — 10–20 идей проектов с мини-ТЗ
-- `roadmap.md` — план изучения на 2–4 недели
+## Example Output
+TL;DR (фрагмент из `examples/out/tldr.md`):
+- [Evals for Tool Agents](https://arxiv.org/abs/2312.XXXX) — relevance 0.31
+- [Memory for AI Agents](https://lilianweng.github.io/posts/2024-01-12-memory/) — relevance 0.26
+- [Evals for Tool-Using Agents](https://arxiv.org/abs/2403.05432) — relevance 0.25
 
-## Подключение реального поиска
+Идея (из `examples/out/ideas.md`):
+- **Agents Lab #1** — Проблема: Hard to benchmark agents systems consistently. Решение: Auto pipeline to gather data, run evals, and report agents metrics. MVP: CLI + seed datasets + simple scoring. Риски: Data quality, noisy signals, drift.
 
-По умолчанию используется сид-датасет `data/seed_sources.json` и ранжирование по ключевым словам.
-Чтобы подключить реальный поиск:
-- добавьте новый провайдер в `src/auto_research_agent/providers/` (наследник `BaseProvider`),
-- реализуйте метод `fetch(topic, limit)` с вызовами внешних API (Serper, Tavily, Bing, GitHub, arXiv и т.п.),
-- зарегистрируйте провайдер в `pipeline.py` (в списке `providers`).
+Больше примеров в `examples/out/`.
 
-Предлагаемые ключи окружения для внешних API:
-- `SERPER_API_KEY`, `TAVILY_API_KEY`, `BING_API_KEY`, `GITHUB_TOKEN` — используйте то, что доступно.
+## How it works
+- Провайдеры собирают ссылки (по умолчанию SeedProvider из `data/seed_sources.json`).
+- `rank_sources`: TF-IDF + косинус по topic vs (title+url).
+- `summarize_sources`: экстрактивные предложения + ключевые слова => тренды/споры.
+- `generate_ideas` и `generate_roadmap`: синтетика на основе keywords.
+- Рендеринг через Jinja-шаблоны в Markdown.
 
-Если ключей нет, код продолжает работать на seed.
+## Configuration
+- Без ключей: используется seed-датасет (50 ссылок).
+- С ключами: добавьте провайдер в `providers/`, читайте ключи из env (`SERPER_API_KEY`, `TAVILY_API_KEY`, `BING_API_KEY`, `GITHUB_TOKEN`, др.), зарегистрируйте в `pipeline.gather_sources`.
+- Параметры: `--out` для директории вывода; топик — аргумент CLI.
 
-## Архитектура
+## FAQ
+**Нужен ли интернет?** Нет, сид-режим работает офлайн. Подключаемые провайдеры потребуют сеть и ключи.
 
-```
-src/auto_research_agent/
-  cli.py            # CLI на Typer
-  pipeline.py       # оркестратор: собирает источники, ранжирует, генерит отчёты
-  ranker.py         # простое TF-IDF/ключевые слова для сортировки
-  summarizer.py     # extractive-суммаризация по ключевым предложениям
-  providers/
-    base.py         # интерфейс провайдера
-    seed.py         # провайдер сид-источников
-  templates/        # markdown-шаблоны
-  ...
-data/seed_sources.json
-```
+**Можно ли поменять формат отчётов?** Да, правьте шаблоны в `src/auto_research_agent/templates/`.
 
-## Команды разработчика
+**Где добавить новый провайдер?** Создайте в `providers/` класс от `BaseProvider` и подключите в `pipeline.gather_sources`.
 
-```bash
-make format     # black + ruff --fix
-make lint       # ruff
-make test       # pytest
-make run        # пример запуска на дефолтной теме
-```
+**Что с зависимостями?** Python 3.11+, `pip install -e .` ставит всё необходимое.
 
-## Пример запуска
+## Contributing
+- `make format` → ruff --fix + black
+- `make lint` → ruff
+- `make test` → pytest
+- `make run` → пример запуска на дефолтной теме
 
-```bash
-make run
-cat out/tldr.md
-```
-
-## Тесты
-
-Запуск:
-```bash
-pytest
-```
-
-## Лицензия
-
-MIT
-
-## Проверка
-
-Команды, которые должны проходить:
-
-```bash
-python -m pip install -e . --break-system-packages  # или в venv без флага
-ruff check src tests
-pytest
-auto-research "test topic" --out out/
-```
+PR: следуйте шаблону, добавляйте тесты и обновляйте docs/ при изменениях логики.
